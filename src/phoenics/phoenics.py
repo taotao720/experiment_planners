@@ -80,23 +80,6 @@ class Phoenics(Logger):
 			from .DatabaseHandler import DatabaseHandler
 			self.db_handler = DatabaseHandler(self.config)
 
-
-	def update_config(self, config_file = None, config_dict = None):
-		
-		self.config = ConfigParser(config_file, config_dict)
-		self.config.parse()
-		self.config.set_home(os.path.dirname(os.path.abspath(__file__)))
-	
-		np.random.seed(self.config.get('random_seed'))	
-		self.update_verbosity(self.config.get('verbosity'))
-		
-		self.random_sampler       = RandomSampler(self.config.general, self.config.parameters)
-		self.obs_processor        = ObservationProcessor(self.config)
-		self.bayesian_network     = BayesianNetwork(self.config)
-		self.acquisition          = Acquisition(self.config)
-		self.sample_selector      = SampleSelector(self.config)
-		
-		
 		
 	def recommend(self, observations = None, as_array = False):
 		
