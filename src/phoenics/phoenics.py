@@ -149,16 +149,6 @@ class Phoenics(Logger):
 		self.iter_counter += 1
 		return return_samples
 		
-	def remove_obs(self, observations, points):
-		
-		points.sort(reverse=True)
-		if len(observations) < points[0]:
-		    PhoenicsNotFoundError('Point of of bound') #need to change to a correct error type
-		else:
-		    for point in points:
-			observations.pop(point - 1)
-		return observations
-	
 	
 	def read_db(self, outfile = 'database.csv', verbose = True):
 		self.db_handler.read_db(outfile, verbose)
