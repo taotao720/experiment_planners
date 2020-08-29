@@ -149,7 +149,7 @@ class Phoenics(Logger):
 		self.iter_counter += 1
 		return return_samples
 		
-	def remove_points(self, observations, points):
+	def remove_obs(self, observations, points):
 		
 		points.sort(reverse=True)
 		if len(observations) < points[0]:
